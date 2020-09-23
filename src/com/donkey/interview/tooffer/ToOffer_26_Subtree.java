@@ -9,6 +9,8 @@ package com.donkey.interview.tooffer;
 
 public class ToOffer_26_Subtree {
     static class TreeNode {
+        // s s
+        int s;
         int val;
         TreeNode left;
         TreeNode right;
