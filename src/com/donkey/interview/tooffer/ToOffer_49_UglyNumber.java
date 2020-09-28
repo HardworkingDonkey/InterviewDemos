@@ -17,12 +17,14 @@ public class ToOffer_49_UglyNumber {
             int a2 = dp[i2] * 2;
             int a3 = dp[i3] * 3;
             int a5 = dp[i5] * 5;
-            dp[i] = Math.max(Math.max(a2, a3), a5);
+            dp[i] = Math.min(Math.min(a2, a3), a5);
             if (dp[i] == a2) {
                 i2++;
-            } else if (dp[i] == a3) {
+            }
+            if (dp[i] == a3) {
                 i3++;
-            } else {
+            }
+            if (dp[i] == a5) {
                 i5++;
             }
         }
