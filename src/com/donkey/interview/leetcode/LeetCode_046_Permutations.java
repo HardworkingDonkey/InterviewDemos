@@ -12,7 +12,7 @@ import java.util.List;
  * @since 2020.09.21 19:09
  */
 
-public class LeetCode_46_Permutations {
+public class LeetCode_046_Permutations {
     public List<List<Integer>> permute(int[] nums) {
         int len = nums.length;
         List<List<Integer>> res = new ArrayList<>();
