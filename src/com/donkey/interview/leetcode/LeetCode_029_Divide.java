@@ -95,8 +95,8 @@ public class LeetCode_029_Divide {
         return count + div(dividend - curDivisor, divisor);
     }
 
-    public static void main(String[] args) {
-        int a = Integer.MIN_VALUE;
-        System.out.println(a - 1); // 整型最小值 - 1 = 整型最大值
-    }
+//    public static void main(String[] args) {
+//        int a = Integer.MIN_VALUE;
+//        System.out.println(a - 1); // 整型最小值 - 1 = 整型最大值
+//    }
 }
