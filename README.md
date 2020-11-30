@@ -1241,7 +1241,117 @@
 
 ### 策略模式
 
+* 定义: 定义一系列的算法, 把它们一个个封装起来, 并且使它们可相互替换
 
+* 例子: 僵尸有很多种类, 每个种类有共性, 但共性的表现方式不一
+
+* 攻击和移动接口
+
+  ```java
+  interface Moveable {
+      void move();
+  }
+  interface Attackable {
+      void attack();
+  }
+  ```
+
+* 僵尸抽象类, 其中组合了攻击和移动接口
+
+  ```java
+  abstract class Zombie {
+      Moveable moveable;
+      Attackable attackable;
+      public abstract void display();
+      abstract void move();
+      abstract void attack();
+      
+      public Zombie(Moveable moveable, Attackable attackable) {
+          this.moveable = moveable;
+          this.attackable = attackable;
+      }
+      // getter and setter
+  }
+  ```
+
+* 具体移动实现类
+
+  ```java
+  class StepByStep implements Moveable {
+      @Override
+      public void move() {
+          System.out.println("一步一步");
+      }
+  }
+  class Jump implements Moveable {
+      @Override
+      public void move() {
+          System.out.println("跳");
+      }
+  }
+  ```
+
+* 具体攻击实现类
+
+  ```java
+  class HitAttack implements Attackable {
+      @Override
+      public void attack() {
+          System.out.println("打");
+      }
+  }
+  static class BiteAttack implements Attackable {
+      @Override
+      public void attack() {
+          System.out.println("咬");
+      }
+  }
+  ```
+
+* 具体僵尸实现类
+
+  ```java
+  class FlagZombie extends Zombie {
+      public NormalZombie() {
+          this(new StepByStep(), new BiteAttack());
+      }
+      
+      public NormalZombie(Moveable moveable, Attackable attackable) {
+          super(moveable, attackable);
+      }
+  
+      @Override
+      public void display() {
+          System.out.println("普通");
+          move();
+          attack();
+      }
+  
+      @Override
+      void move() {
+          moveable.move();
+      }
+  
+      @Override
+      void attack() {
+          attackable.attack();
+      }
+  }
+  ```
+
+* 调用, 可随时通过新建接口来改变僵尸的攻击方式
+
+  ```java
+  public static void main(String[] args) {
+      Zombie zombie = new FlagZombie();
+      zombie.display(); // 原来是咬
+      // 更换攻击方式
+      zombie.setAttackable(new HitAttack()); // 改为打
+      zombie.display();
+  }
+  ```
+
+  
 
 # 数据库
 
