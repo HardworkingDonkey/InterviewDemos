@@ -41,8 +41,4 @@ public class LeetCode_071_SimplifyPath {
         return result.toString();
     }
 
-    @Test
-    public void test() {
-        System.out.println(Arrays.toString("/..//a/s".split("/")));
-    }
 }
